@@ -1,0 +1,29 @@
+dist: xenial
+language: python
+python:
+- 2.7
+- 3.5
+- 3.6
+- 3.7
+env:
+- NAPALM=2.4.0
+matrix:
+  include:
+  - python: 3.6
+    env: TOXENV=black
+install:
+- pip install tox-travis
+- pip install coveralls
+deploy:
+  provider: pypi
+  skip_existing: true
+  user: mirucha
+  on:
+    tags: true
+    branch: master
+  password:
+    secure: "kGgyYaYJBrNdltBkhNljv88RG5ShspKisNIBDKXYqjASTfWDnPEQBYYvQEm2n/Ilayd+fAoa5FsZzJvrNAtm5bNiX7pppOEySMUITYsoBL38uKZABj8iH9WxSMOTrSZHIdPRrlv2ikHwMm2WrhlpNmocn5huMf7+Xa6w67BdPz+tt/T9La4MewmQXEwOG3O35EP5ekOJLqY2D4bE9ciHmxzs+68nN+r6jLV6n2vlE/ocktQTXvy6ViV/jm65aTPqWVmEE/Yai8VEQTTFr53ZXa+BiMCFj0MXn6ukdDo3+lORaOmD1PFxv4ix5J/+4W4CI387v00/Wr0EyBke4SzyXNbI3UhGdQjSDOMNlq2sO99Adx/a10KtHQoj47wBUkSEnXq6lmvpwlzKzBPTEZSdfGcC/gBkjXxlmLBcbAVs5yWd54ZGknMZjV0cDECFIispubdFjpMxPhBLWm9FCWIsclHt5HU0QueuaEEHSGOma6+P1lhCy4wV3oTMFpMRVo4A/1/0TCv9EyqrmebbkJfLgtF7D9DSvwDtyQxYWN/CftWkLwUh/ypzQUfhHThPmUj9qUwFeVH2cZW4Kbc+ZU8xN1Ljp9cpxhybPp6GoSxKSmXiRqRxdWqsdCW8niKiqbREOxCJWyQRtjTo1El1zi3ZtR/NHLvXH2sGfGgLV22Sd5A="
+script:
+- tox
+after_success:
+- coveralls

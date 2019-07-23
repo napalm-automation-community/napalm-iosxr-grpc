@@ -1,0 +1,4 @@
+include requirements.txt
+include napalm_iosxr_grpc/templates/*.j2
+include napalm_iosxr_grpc/utils/textfsm_templates/*.tpl
+
