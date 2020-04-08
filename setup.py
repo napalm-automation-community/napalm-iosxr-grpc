@@ -12,7 +12,10 @@ setup(
     packages=find_packages(exclude=("test*",)),
     author="Mircea Ulinic",
     author_email="ping@mirceaulinic.net",
-    description="Network Automation and Programmability Abstraction Layer with Multivendor support: gRPC-based driver for IOS-XR",
+    description=(
+        "Network Automation and Programmability Abstraction Layer with Multivendor "
+        "support: gRPC-based driver for IOS-XR"
+    ),
     classifiers=[
         "Topic :: Utilities",
         "Programming Language :: Python",
